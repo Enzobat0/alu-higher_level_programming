@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
+    if isinstance(roman_string, str) or roman_string is None:
+        return 0
     roman_values = {
             'I': 1,
             'V': 5,
@@ -11,14 +13,11 @@ def roman_to_int(roman_string):
             }
     result = 0
     prev_value = 0
-    if isinstance(roman_string, str) or roman_string is None:
-        return 0
-    else:
-        for symbol in roman_string[::-1]:
-            value = roman_values[symbol]
-            if value >= prev_value:
-                result += value
-            else:
-                result -= value
-            prev_value = value
+    for symbol in roman_string[::-1]:
+        value = roman_values[symbol]
+        if value >= prev_value:
+            result += value
+        else:
+            result -= value
+        prev_value = value
     return result
