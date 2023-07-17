@@ -11,7 +11,7 @@ def roman_to_int(roman_string):
             }
     result = 0
     prev_value = 0
-    for symbol in roman_number[::-1]:
+    for symbol in roman_string[::-1]:
         value = roman_values[symbol]
         if value >= prev_value:
             result += value
