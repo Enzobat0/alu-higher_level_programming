@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def safe_print_division(a, b):
     try:
-        res = a / b
+        result = a / b
     except (TypeError, ValueError):
-        res = None
+        result = None
     finally:
-        print("Inside result: {}".format(res))
+        print("Inside result: {}".format(result))
