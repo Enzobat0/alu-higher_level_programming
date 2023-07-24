@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Class Square
+"""Class Square with a getter and a setter
 """
 
 
