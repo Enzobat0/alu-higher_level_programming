@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""Class Square with a getter and a setter
-"""
-#a square class
+"""Class Square with a getter and a setter"""
 
 
 class Square:
-    """Class square
-    """
+    """Class square"""
+
     def __init__(self, size=0):
         self.__size = size
     #property
