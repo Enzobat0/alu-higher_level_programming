@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Class Square with a getter and a setter"""
+"""A class Square that defines a square by: (based on 3-square.py)"""
 
 
 class Square:
