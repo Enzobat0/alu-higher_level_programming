@@ -58,4 +58,4 @@ class Rectangle:
         output = []
         for x in range(self.__height:
             [output += "#" * self.__width + "\n"
-        return output[:-1] #Remove the last newline character
+        return output[:-1]
