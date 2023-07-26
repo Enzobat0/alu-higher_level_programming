@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-"""A class Rectangle that defines a rectangle based on 0-rectangle.py"""
+"""A class Rectangle that defines a rectangle based on 1-rectangle.py"""
 
 
 class Rectangle:
     """The Rectangle class"""
-
     def __init__(self, width=0, height=0):
-        """Initializes a Rectangle object.
+        """Initialize a Rectangle object.
 
         Args:
-            width (int): The width of the rectangle obj.
-            height (int): The height of the rectangle obj.
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
         """
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """property(get&set) for the width of the rectangle."""
+        """property(get&set) for the width of the Rectangle."""
         return self.__width
 
     @width.setter
@@ -30,7 +29,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """property(get&set) for the height of the rectangle."""
+        """property(get&set) for the height of the Rectangle."""
         return self.__height
 
     @height.setter
@@ -42,20 +41,20 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Returns the area of the rectangle"""
+        """Returns the area of the Rectangle."""
         return (self.__width * self.__height)
 
     def perimeter(self):
-        """Returns the perimeter of the rectangle"""
+        """Returns the perimeter of the Rectangle."""
         if self.__width == 0 or self.__height == 0:
-            return(0)
-        return((self.__width * 2) + (self.__height * 2))
+            return (0)
+        return ((self.__width * 2) + (self.__height * 2))
 
     def __str__(self):
         """Returns the rectangle with the character #"""
         if self.__width == 0 or self.__height == 0:
-            return ("")
-        output = []
-        for x in range(self.__height:
-            [output += "#" * self.__width + "\n"
-        return output[:-1]
+            return ""
+        rectangle_str = ""
+        for _ in range(self.__height):
+            rectangle_str += "#" * self.__width + "\n"
+        return rectangle_str[:-1]
