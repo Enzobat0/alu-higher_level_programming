@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""A class Rectangle that defines a rectangle based on 1-rectangle.py"""
+"""A class Rectangle that defines a rectangle based on 5-rectangle.py"""
 
 
 class Rectangle:
-    """The Rectangle class
+     """The Rectangle class
 
     Attributes:
-        number_of_instances (int): The number of the Rectangle obj.
-        """
+        number_of_instances (int): The number of Rectangle obj.
+    """
 
-        number_of_instances = 0
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """Initialize a Rectangle object.
