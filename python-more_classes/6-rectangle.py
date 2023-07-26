@@ -5,11 +5,9 @@
 class Rectangle:
     """The Rectangle class
 
-
     Attributes:
         number_of_instances (int): The number of the Rectangle obj.
         """
-
 
         number_of_instances = 0
 
