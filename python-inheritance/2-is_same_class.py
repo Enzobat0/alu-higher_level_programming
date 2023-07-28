@@ -4,4 +4,4 @@
 
 def is_same_class(obj, a_class):
     """Verify if the type of the on=bj coresponds to a_class"""
-    type(obj) == a_class
+    return type(obj) == a_class
