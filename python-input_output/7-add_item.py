@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-"""function that creates an Object from a “JSON file”"""
-import json
+"""Defines a base geometry class BaseGeometry."""
 
 
-def load_from_json_file(filename):
-    """
-    Create an Object from a JSON file
+class BaseGeometry:
+    """Reprsent base geometry."""
 
-    Args:
-        filename: textfile name
+    def area(self):
+        """Not yet implemented."""
+        raise Exception("area() is not implemented")
 
-    Raises:
-        Exception: when the object can't be encoded
-    """
-
-    with open(filename, 'r', encoding="utf-8") as f:
-        return json.load(f)
+    def integer_validator(self, name, value):
+        """Validate a parameter as an integer."""
+        if type(value) != int:
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0:
+            raise ValueError(f"{name} must be greater than 0")
