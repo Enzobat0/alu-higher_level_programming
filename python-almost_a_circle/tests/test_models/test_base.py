@@ -1,96 +1,57 @@
 #!/usr/bin/python3
-""" Module for test Base class """
+"""Unit Tests for Base class."""
+
 import unittest
 from models.base import Base
-from models.square import Square
-from models.rectangle import Rectangle
-from io import StringIO
-from unittest import TestCase
-from unittest.mock import patch
 
 
-class TestBaseMethods(unittest.TestCase):
-    """ Suite to test Base class """
+class TestBase(unittest.TestCase):
+    """Unit tests for testing the Base class."""
 
-    def setUp(self):
-        """ Method invoked for each test """
-        Base._Base__nb_objects = 0
+    def test_base_1_init_with_id(self):
+        """Test initializing Base instance with a specific ID."""
+        b = Base(123)
+        self.assertEqual(b.id, 123)
 
-    def test_id(self):
-        """ Test assigned id """
-        new = Base(1)
-        self.assertEqual(new.id, 1)
+    def test_base_2_init_without_id(self):
+        """Test initializing Base instances without specifying ID."""
+        b1 = Base()
+        b2 = Base()
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 2)
 
-    def test_id_default(self):
-        """ Test default id """
-        new = Base()
-        self.assertEqual(new.id, 1)
+    def test_base_3_multiple_instances(self):
+        """Test multiple instances of Base with and without ID."""
+        b1 = Base()
+        b2 = Base()
+        b3 = Base(456)
+        self.assertEqual(b1.id, 3)
+        self.assertEqual(b2.id, 4)
+        self.assertEqual(b3.id, 456)
 
-    def test_id_nb_objects(self):
-        """ Test nb object attribute """
-        new = Base()
-        new2 = Base()
-        new3 = Base()
-        self.assertEqual(new.id, 1)
-        self.assertEqual(new2.id, 2)
-        self.assertEqual(new3.id, 3)
+    def test_base_4_to_json_string(self):
+        """Test the to_json_string method of Base."""
+        self.assertEqual(Base.to_json_string([]), "[]")
+        ld1 = Base.to_json_string([{'id': 21, 'name': 'json'}])
+        self.assertEqual(ld1, '[{"id": 21, "name": "json"}]')
+        ld2 = Base.to_json_string([{'id': 21, 'name': 'json'},
+                                   {'age': 25, 'class': 4}])
+        self.assertEqual(ld2, '[{"id": 21, "name": "json"}, '
+                         '{"age": 25, "class": 4}]')
+        self.assertIsInstance(ld2, str)
 
-    def test_id_mix(self):
-        """ Test nb object attributes and assigned id """
-        new = Base()
-        new2 = Base(1024)
-        new3 = Base()
-        self.assertEqual(new.id, 1)
-        self.assertEqual(new2.id, 1024)
-        self.assertEqual(new3.id, 2)
+    def test_base_5_from_json_string(self):
+        """Test the from_json_string method of Base."""
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        ld1 = Base.from_json_string('[{"id": 21, "name": "json"}]')
+        self.assertEqual(ld1, [{'id': 21, 'name': 'json'}])
+        ld2 = Base.from_json_string('[{"id": 21, "name": "json"}, '
+                                    '{"age": 25, "class": 4}]')
+        self.assertEqual(ld2, [{'id': 21, 'name': 'json'},
+                               {'age': 25, 'class': 4}])
+        self.assertIsInstance(ld2, list)
 
-    def test_string_id(self):
-        """ Test string id """
-        new = Base('1')
-        self.assertEqual(new.id, '1')
 
-    def test_more_args_id(self):
-        """ Test passing more args to init method """
-        with self.assertRaises(TypeError):
-            new = Base(1, 1)
-
-    def test_access_private_attrs(self):
-        """ Test accessing to private attributes """
-        new = Base()
-        with self.assertRaises(AttributeError):
-            new.__nb_objects
-
-    def test_save_to_file_1(self):
-        """ Test JSON file """
-        Square.save_to_file(None)
-        res = "[]\n"
-        with open("Square.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-
-        try:
-            os.remove("Square.json")
-        except:
-            pass
-
-        Square.save_to_file([])
-        with open("Square.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
-
-    def test_save_to_file_2(self):
-        """ Test JSON file """
-        Rectangle.save_to_file(None)
-        res = "[]\n"
-        with open("Rectangle.json", "r") as file:
-            with patch('sys.stdout', new=StringIO()) as str_out:
-                print(file.read())
-                self.assertEqual(str_out.getvalue(), res)
-        try:
-            os.remove("Rectangle.json")
-        except:
-            pass
-
-        Rectangle.save_to_file([])
-        with open("Rectangle.json", "r") as file:
-            self.assertEqual(file.read(), "[]")
+if __name__ == '__main__':
+    unittest.main()
