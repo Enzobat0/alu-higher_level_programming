@@ -1,9 +1,7 @@
 #!/usr/bin/node
-
-if (process.argv.length <= 2) {
-    console.log('No argument');
+const array = process.argv.slice(2);
+if (array[0] === undefined) {
+  console.log('No argument');
 } else {
-    // Access and print the first argument
-    const firstArgument = process.argv[2];
-    console.log(`First argument: ${firstArgument}`);
+  console.log(array[0]);
 }
