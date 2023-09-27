@@ -4,7 +4,7 @@ const Square_ = require('./5-square');
 
 class Square extends Square_ {
   charPrint (c = 'X') {
-    for (let i = 0, i < this.size, i++) {
+    for (let j = 0, j < this.size, j++) {
       console.log(c.repeat(this.size));
     }
   }
