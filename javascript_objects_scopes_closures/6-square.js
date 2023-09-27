@@ -17,6 +17,6 @@ const Square = class Square extends Square_ {
       super.print();
     }
   }
-}
+};
 
 module.exports = Square;
